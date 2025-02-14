@@ -22,6 +22,7 @@ RUN echo "--- runtests.sh COMPLETE ---"
 RUN mkdir /opt/oqs-installer
 WORKDIR /opt/oqs-installer
 COPY ./openssl_cnf_append.txt .
-RUN cat /etc/ssl/openssl.cnf ./openssl_cnf_append.txt > /etc/ssl/openssl.cnf
+RUN cp /etc/ssl/openssl.cnf /etc/ssl/openssl.cnf.1.bak
+RUN cat /etc/ssl/openssl.cnf.1.bak ./openssl_cnf_append.txt > /etc/ssl/openssl.cnf
 
 
