@@ -39,7 +39,7 @@ if($status eq "active") {
   print "AOK. Provider is active\n";
   exit 0;
 } else {
-  print "NOK. Privider is NOT active\n";
+  print "NOK. Provider is NOT active\n";
   exit 1;
 }
 
