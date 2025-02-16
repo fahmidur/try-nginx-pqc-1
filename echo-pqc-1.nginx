@@ -1,0 +1,16 @@
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name echo-pqc-1.lvh.me;
+    root /var/www/example.com;
+    index index.html index.php;
+    ssl_certificate /opt/certs/pqc.crt;
+    ssl_certificate_key /opt/certs/pqc.key;
+    ssl_protocols TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    # ssl_ecdh_curve X25519MLKEM768:x25519_kyber768:p384_kyber768:x25519:secp384r1:x448:secp256r1:secp521r1;
+    ssl_ecdh_curve X25519MLKEM768;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
