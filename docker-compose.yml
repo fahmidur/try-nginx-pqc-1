@@ -1,0 +1,8 @@
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - "8043:443"
+    volumes:
+      - ./certs_export:/opt/certs_export

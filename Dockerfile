@@ -61,3 +61,10 @@ COPY ./echo_pqc_1/public .
 # CMD ["nginx"]
 
 
+RUN mkdir /opt/main
+WORKDIR /opt/main
+COPY ./entrypoint.sh .
+ENTRYPOINT ["/opt/main/entrypoint.sh"]
+
+RUN mkdir /opt/certs_export/
+
