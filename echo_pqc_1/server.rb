@@ -19,11 +19,12 @@ server.mount_proc '/' do |req, res|
     :method => req.request_method,
     :request_ip => req['x-real-ip'],
     :request_url => req.path,
-    :headers => req_headers,
+    :ssl_curve => req['x-ssl-curve'],
     :now => {
       :utc_str => now.utc.to_s,
       :iso_str => now.to_s,
-    }
+    },
+    :headers => req_headers,
   }
   res.body = data.to_json
 end
