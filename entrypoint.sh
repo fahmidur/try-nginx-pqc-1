@@ -47,9 +47,9 @@ echo "Got PID_NGINX=$PID_NGINX"
 
 # Now check if PID_NGINX is running
 if ps -p $PID_NGINX > /dev/null 2>&1; then
-  echo "AOK. PID_NGINX=$PID_NGINX is running."
+  echo "AOK PID_NGINX=$PID_NGINX is running."
 else
-  echo "NOK. PID_NGINX=$PID_NGINX is NOT running."
+  echo "NOK PID_NGINX=$PID_NGINX is NOT running."
   echo "ERROR: Expecting NGINX at PID_NGINX to be running."
   cleanup
   exit 1
