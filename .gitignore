@@ -2,5 +2,4 @@ tmp
 tmp/**
 node_modules
 node_modules/**
-certs_export
 certs_export/**
