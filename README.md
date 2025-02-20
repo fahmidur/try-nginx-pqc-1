@@ -37,9 +37,15 @@ https://echo-pqc-1.lvh.me:8043
 
 I'm using lvh.me as an external DNS service, that resolves to `127.0.0.1`.
 
-Now you can see if your browser (Chrome or Firefox), is using a PQC curve.
-The echo service, running in the container, will among other things, echo 
-in the JSON output, the `$ssl_curve` parameter used by NGINX.
+The service is using a self-signed cert that was created with the Docker image.
+So you will get an untrusted certificate error. If you want to not get this error,
+you must import the self-signed cert, that is exposed to the host in `./certs_export/pqc.crt`.
+But, since we are only using PQC for key-exchange, and not the certificate, it's not really all 
+that important to import certificate. It is there if you care.
+
+Now you can see if your browser or HTTPS-client, is using a PQC curve for key exchange.
+The echo service, running in the container will, among other things, echo 
+in the JSON output the `$ssl_curve` parameter used by NGINX.
 
 Here is a sample output:
 
@@ -79,9 +85,10 @@ Here is a sample output:
 What you see above is the key `ssl_curve`, which returns a code indicating the curve used by NGINX.
 Here the value of `0x11ec`, which is 4588 in hex, and translates to `X25519MLKEM768` according to this document: [IANA TLS Parameters](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8).
 
-So at least, for my Chrome browser, this indicates that we are using a hybrid PQC scheme.
+So at least for my Chrome browser, that is Chrome version 133, this indicates that we are using a hybrid PQC scheme.
+And that's interesting.
 
-## What about the PQC certificates?
+## What about PQC certificates?
 
 There are no PQC certificates involved here. 
 What you will notice in the Dockerfile is that the self-signed certificate generated for this test, is a standard RSA certificte.
@@ -90,7 +97,7 @@ to their HTTPS client for testing.
 
 The only PQC happening here, or expected to happen here, is in the key-exchange, and NOT the certificate.
 
-## Links / Resources
+## External References
 
 https://www.linode.com/docs/guides/post-quantum-encryption-nginx-ubuntu2404/
 https://github.com/open-quantum-safe/oqs-provider
