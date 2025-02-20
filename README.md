@@ -99,7 +99,7 @@ The only PQC happening here, or expected to happen here, is in the key-exchange,
 
 ## External References
 
-https://www.linode.com/docs/guides/post-quantum-encryption-nginx-ubuntu2404/
-https://github.com/open-quantum-safe/oqs-provider
-https://blog.aegrel.ee/kyber-nginx.html
+- https://www.linode.com/docs/guides/post-quantum-encryption-nginx-ubuntu2404/
+- https://github.com/open-quantum-safe/oqs-provider
+- https://blog.aegrel.ee/kyber-nginx.html
 
