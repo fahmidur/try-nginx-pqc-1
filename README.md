@@ -3,7 +3,7 @@
 The purpose of this repo is to try out Nginx with PQC settings.
 
 Notice that this is only using PQC algorithms for key exchange, 
-and not for certficiates. The self-signed cert used for the tests
+and not for certificates. The self-signed cert used for the tests
 here are still your usual RSA-based x509 cert.
 
 ## Quick Start
@@ -91,7 +91,7 @@ And that's interesting.
 ## What about PQC certificates?
 
 There are no PQC certificates involved here. 
-What you will notice in the Dockerfile is that the self-signed certificate generated for this test, is a standard RSA certificte.
+What you will notice in the Dockerfile is that the self-signed certificate generated for this test, is a standard RSA certificate.
 There is a folder exported by the container to the host, called `certs_export`, that allows the host to import the self-signed cert
 to their HTTPS client for testing.
 
