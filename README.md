@@ -21,8 +21,7 @@ Here are the list of curves NGINX with the OpenSSL OQS provider is configured to
 * secp256r
 * secp521r1
 
-I'm using docker-compose here because it makes all of the port-forwarding between the host and guest,
-extremely easy. 
+I'm using docker-compose here because it simplifies port-forwarding between the host and guest.
 
 To get started simply run:
 
@@ -30,22 +29,26 @@ To get started simply run:
 docker compose up
 ```
 
-And now in your host browser, or HTTPS client of choice, you can visit:
+And now in your host browser or other HTTPS client of choice, you can visit:
 ```
 https://echo-pqc-1.lvh.me:8043
 ```
 
-I'm using lvh.me as an external DNS service, that resolves to `127.0.0.1`.
+I'm using lvh.me as an external DNS service which resolves to `127.0.0.1`.
 
-The service is using a self-signed cert that was created with the Docker image.
+The NGINX server is using a self-signed cert that was created with the Docker image.
 So you will get an untrusted certificate error. If you want to not get this error,
-you must import the self-signed cert, that is exposed to the host in `./certs_export/pqc.crt`.
+you must import the self-signed cert which is exposed to the host in `./certs_export/pqc.crt`.
 But, since we are only using PQC for key-exchange, and not the certificate, it's not really all 
-that important to import certificate. It is there if you care.
+that important to import the certificate into your browser/https-client. It is there if you care.
 
 Now you can see if your browser or HTTPS-client, is using a PQC curve for key exchange.
 The echo service, running in the container will, among other things, echo 
 in the JSON output the `$ssl_curve` parameter used by NGINX.
+
+Side note: I recommend using a JSON Formatter/Prettifier plugin for your browser, as it makes viewing JSON 
+responses from various HTTP(S) services, like this one, more convenient. Alternatively, if you're using CURL, 
+you can pipe the output to something like `jq`.
 
 Here is a sample output:
 
