@@ -46,20 +46,12 @@ WORKDIR /etc/nginx/sites-enabled
 RUN rm default
 COPY ./echo-pqc-1.nginx .
 
-# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-# RUN bash -c "source ~/.nvm/nvm.sh; nvm install node"
-
 RUN apt install -y ruby 
 
 RUN mkdir /srv/echo_pqc_1
 WORKDIR /srv/echo_pqc_1
 COPY ./echo_pqc_1/server.rb .
 COPY ./echo_pqc_1/public .
-
-# RUN npm install
-# CMD ["nginx", "-g", "daemon off;"]
-# CMD ["nginx"]
-
 
 RUN mkdir /opt/main
 WORKDIR /opt/main
